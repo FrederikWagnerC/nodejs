@@ -17,4 +17,24 @@ export class AlbumModel {
             console.error(`Fejl: kan ikke hente albumliste, ${error}`)
         }
     }
+
+    static async getAlbumById(id) {
+        try {
+            // Kald til database
+            let { data, error } = await supabase
+                .from('albums')
+                .select('*')
+                .eq('id', id)
+                .single()
+            if (error) {
+                throw new Error(error.message)
+            } else {
+                return data
+            }
+        }
+        catch (error) {
+            console.error(`Fejl: kan ikke hente sangliste, ${error}`)
+        }
+    }
 }
+

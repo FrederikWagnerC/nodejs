@@ -7,3 +7,9 @@ AlbumController.get('/albums', async (req, res) => {
     let albums = await AlbumModel.getAllAlbums();
     res.send(albums);
 })
+
+AlbumController.get('/albums/:id([0-9]*)', async (req, res) => {
+    const data = await ArtistModel.getAlbumById(req.params.id);
+    console.log(data);
+    
+})

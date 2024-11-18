@@ -17,4 +17,23 @@ export class ArtistModel {
             console.error(`Fejl: kan ikke hente artistliste, ${error}`)
         }
     }
+
+    static async getArtistById(id) {
+        try {
+            // Kald til database
+            let { data, error } = await supabase
+                .from('artists')
+                .select('*')
+                .eq('id', id)
+                .single()
+            if (error) {
+                throw new Error(error.message)
+            } else {
+                return data
+            }
+        }
+        catch (error) {
+            console.error(`Fejl: kan ikke hente sangliste, ${error}`)
+        }
+    }
 }

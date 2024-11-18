@@ -24,6 +24,13 @@ app.listen(port, () => {
     console.log(`Server kører på http://localhost:${port}`);
 });
 
+app.get('/songs', (req, res) => {
+    res.send("Hello World");
+    let songs = SongModel.getAllRecords();
+    app.use(songs);
+    console.log(songs);
+});
+
 
 // app.get('/test', async (req, res) => {
 //     res.send("Hello World");
