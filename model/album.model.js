@@ -36,5 +36,29 @@ export class AlbumModel {
             console.error(`Fejl: kan ikke hente sangliste, ${error}`)
         }
     }
+
+    static async createAlbum(formdata) {
+        try {
+            let { data, error } = await supabase.from('songs')
+                .insert([
+                    {
+                        artist_id: formdata.artist_id,
+                        title: formdata.title,
+                        description: formdata.description,
+                        image: formdata.image,
+                        release_date: formdata.release_date,
+                    }
+                ])
+                .select('*') // Ensure the inserted record is returned
+            if (error) {
+                throw new Error(error.message);
+            } else {
+                return data[0]; // Return the first (and only) record
+            }
+        }
+        catch (error) {
+            console.error(`Fejl: kan ikke oprette sang, ${error}`);
+        }
+    }
 }
 

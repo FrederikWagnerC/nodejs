@@ -12,9 +12,11 @@ import { ArtistController } from './controller/artist.controller.js';
 import { AlbumController } from './controller/album.controller.js';
 dotenv.config();
 
+
 const port = process.env.PORT;
 
 const app = express();
+app.use(express.urlencoded({ extended: true }));
 
 app.use(SongController);
 app.use(ArtistController);
@@ -27,7 +29,7 @@ app.listen(port, () => {
 app.get('/songs', (req, res) => {
     res.send("Hello World");
     let songs = SongModel.getAllRecords();
-    app.use(songs);
+    app.use(songs); 
     console.log(songs);
 });
 

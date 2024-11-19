@@ -13,3 +13,11 @@ ArtistController.get('/artists/:id([0-9]*)', async (req, res) => {
     console.log(data);
     
 })
+
+ArtistController.post('/songs', async (req, res) => {
+    const data = await ArtistModel.createArtist(req.body)
+    res.send(data)
+    console.log(data.id);
+    
+    console.log(req.body);
+});

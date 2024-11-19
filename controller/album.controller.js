@@ -9,7 +9,15 @@ AlbumController.get('/albums', async (req, res) => {
 })
 
 AlbumController.get('/albums/:id([0-9]*)', async (req, res) => {
-    const data = await ArtistModel.getAlbumById(req.params.id);
+    const data = await AlbumModel.getAlbumById(req.params.id);
     console.log(data);
     
 })
+
+AlbumController.post('/songs', async (req, res) => {
+    const data = await AlbumModel.createArtist(req.body)
+    res.send(data)
+    console.log(data.id);
+    
+    console.log(req.body);
+});
