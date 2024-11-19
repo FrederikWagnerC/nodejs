@@ -30,3 +30,9 @@ SongController.put('/songs', async (req, res) => {
     console.log(req.body);
 });
 
+SongController.delete('/songs', async (req, res) => {
+    const data = await SongModel.deleteRecord(req.body)
+    res.send(data)
+    console.log(req.body);
+});
+

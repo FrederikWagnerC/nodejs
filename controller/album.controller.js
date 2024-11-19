@@ -14,7 +14,7 @@ AlbumController.get('/albums/:id([0-9]*)', async (req, res) => {
     
 })
 
-AlbumController.post('/songs', async (req, res) => {
+AlbumController.post('/albums', async (req, res) => {
     const data = await AlbumModel.createAlbum(req.body)
     res.send(data)
     console.log(data.id);
@@ -22,8 +22,14 @@ AlbumController.post('/songs', async (req, res) => {
     console.log(req.body);
 });
 
-AlbumController.put('/songs', async (req, res) => {
+AlbumController.put('/albums', async (req, res) => {
     const data = await AlbumModel.updateAlbum(req.body)
+    res.send(data)
+    console.log(req.body);
+});
+
+AlbumController.delete('/albums', async (req, res) => {
+    const data = await AlbumModel.deleteAlbum(req.body)
     res.send(data)
     console.log(req.body);
 });

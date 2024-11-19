@@ -14,7 +14,7 @@ ArtistController.get('/artists/:id([0-9]*)', async (req, res) => {
     
 })
 
-ArtistController.post('/songs', async (req, res) => {
+ArtistController.post('/artists', async (req, res) => {
     const data = await ArtistModel.createArtist(req.body)
     res.send(data)
     console.log(data.id);
@@ -22,8 +22,14 @@ ArtistController.post('/songs', async (req, res) => {
     console.log(req.body);
 });
 
-ArtistController.put('/songs', async (req, res) => {
+ArtistController.put('/artists', async (req, res) => {
     const data = await ArtistModel.updateArtist(req.body)
+    res.send(data)
+    console.log(req.body);
+});
+
+ArtistController.delete('/artists', async (req, res) => {
+    const data = await ArtistModel.deleteSong(req.body)
     res.send(data)
     console.log(req.body);
 });

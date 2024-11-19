@@ -87,5 +87,24 @@ export class AlbumModel {
         }
 
     }
+
+    static async deleteAlbum(formdata) {
+        try {
+            let { data, error } = await supabase
+                .from('albums')
+                .delete()
+                .eq('id', formdata.id)
+            if (error) {
+                throw new Error(error.message)
+            } else {
+                return 'OK'
+            }
+        }
+
+
+        catch (error) {
+            console.error(`Fejl: kan ikke slette album, ${error}`);
+        }
+    }
 }
 
