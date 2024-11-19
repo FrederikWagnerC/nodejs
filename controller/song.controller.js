@@ -20,7 +20,13 @@ SongController.post('/songs', async (req, res) => {
     const data = await SongModel.createRecord(req.body)
     res.send(data)
     console.log(data.id);
-    
+
+    console.log(req.body);
+});
+
+SongController.put('/songs', async (req, res) => {
+    const data = await SongModel.updateRecord(req.body)
+    res.send(data)
     console.log(req.body);
 });
 

@@ -15,9 +15,15 @@ AlbumController.get('/albums/:id([0-9]*)', async (req, res) => {
 })
 
 AlbumController.post('/songs', async (req, res) => {
-    const data = await AlbumModel.createArtist(req.body)
+    const data = await AlbumModel.createAlbum(req.body)
     res.send(data)
     console.log(data.id);
     
+    console.log(req.body);
+});
+
+AlbumController.put('/songs', async (req, res) => {
+    const data = await AlbumModel.updateAlbum(req.body)
+    res.send(data)
     console.log(req.body);
 });
